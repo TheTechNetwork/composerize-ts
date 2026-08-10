@@ -1,7 +1,7 @@
 import { parse } from './parser';
 import { ComposerizeResult, ParseResult, SupportedOption } from './types';
 import { stringify as yamlStringify } from 'yaml';
-import { deepmerge } from 'deepmerge-ts';
+import { deepmerge } from './deepmerge';
 import { getSupportedOptions } from './options';
 
 const createComposeObjectStructure = (parseResult: ParseResult): object => {

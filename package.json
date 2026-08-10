@@ -22,7 +22,7 @@
     "doc": "pnpm typedoc",
     "prepublishOnly": "rm -rf dist && rm -rf docs && pnpm run build && npm run test",
     "test": "vitest run",
-    "prepare": "husky"
+    "prepare": "git config core.hooksPath .githooks || true"
   },
   "repository": {
     "type": "git",
@@ -51,7 +51,6 @@
   ],
   "dependencies": {
     "commander": "^15.0.0",
-    "deepmerge-ts": "^7.1.5",
     "ip-address": "10.4.0",
     "set-value": "^4.1.0",
     "yaml": "^2.9.0"
@@ -65,7 +64,6 @@
     "@types/set-value": "4.0.3",
     "eslint": "10.8.1",
     "eslint-config-prettier": "10.1.8",
-    "husky": "9.1.7",
     "prettier": "3.9.6",
     "typedoc": "0.28.20",
     "typedoc-plugin-markdown": "4.12.0",
