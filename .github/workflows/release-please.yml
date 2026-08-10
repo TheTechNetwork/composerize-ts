@@ -5,53 +5,22 @@ on:
 name: release-please
 permissions: {}
 jobs:
+  # Maintains the release PR from Conventional Commits and, when it is merged,
+  # creates the GitHub release + tag. Publishing to npm is intentionally NOT
+  # done here - it is handled by publish.yml, which triggers only on the
+  # published release event, so npm can only ever publish from a git release.
   release-please:
     permissions:
-      contents: write # to create release commit (google-github-actions/release-please-action)
-      pull-requests: write # to create release PR (google-github-actions/release-please-action)
-      id-token: write # OIDC token for npm trusted publishing (no NPM_TOKEN needed)
-
+      contents: write # create the release commit / tag
+      pull-requests: write # create/update the release PR
     runs-on: ubuntu-latest
     steps:
       - uses: googleapis/release-please-action@5c625bfb5d1ff62eadeeb3772007f7f66fdcf071 # v4
-        id: release
         with:
-          # Use a PAT if configured (so the release PR triggers CI); otherwise
-          # fall back to the built-in token so the workflow works with no secret
-          # setup. release-type / versioning live in release-please-config.json
-          # + .release-please-manifest.json (v4 is manifest-driven; inline
-          # package-name / bump-minor-pre-major are not valid inputs).
+          # Prefer a PAT when configured: a release created with a PAT triggers
+          # publish.yml (the `release: published` event), whereas a release
+          # created with the built-in GITHUB_TOKEN does not fire other
+          # workflows. Fall back to GITHUB_TOKEN so this still opens release PRs
+          # with no secret setup. release-type / versioning live in
+          # release-please-config.json + .release-please-manifest.json.
           token: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
-
-      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
-        if: ${{ steps.release.outputs.release_created }}
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
-        if: ${{ steps.release.outputs.release_created }}
-
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
-        with:
-          node-version-file: .node-version
-          registry-url: https://registry.npmjs.org
-          cache: 'pnpm'
-        if: ${{ steps.release.outputs.release_created }}
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-        if: ${{ steps.release.outputs.release_created }}
-
-      - name: Build
-        run: pnpm build
-        if: ${{ steps.release.outputs.release_created }}
-
-      # npm's trusted publishing (OIDC) requires npm >= 11.5.1; Node 22 ships an
-      # older npm. Publishing via npm (not pnpm) so the OIDC exchange configured
-      # in the npm registry's Trusted Publisher settings is used - no token.
-      - name: Upgrade npm for trusted publishing
-        run: npm install -g npm@latest
-        if: ${{ steps.release.outputs.release_created }}
-
-      - name: Publish to npm (trusted publishing / OIDC)
-        run: npm publish --provenance --access public
-        if: ${{ steps.release.outputs.release_created }}
