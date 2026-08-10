@@ -9,6 +9,7 @@ jobs:
     permissions:
       contents: write # to create release commit (google-github-actions/release-please-action)
       pull-requests: write # to create release PR (google-github-actions/release-please-action)
+      id-token: write # OIDC token for npm trusted publishing (no NPM_TOKEN needed)
 
     runs-on: ubuntu-latest
     steps:
@@ -23,27 +24,32 @@ jobs:
       - uses: actions/checkout@v6
         if: ${{ steps.release.outputs.release_created }}
 
-      - run: corepack enable
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
         if: ${{ steps.release.outputs.release_created }}
 
       - uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
           registry-url: https://registry.npmjs.org
-          always-auth: true
           cache: 'pnpm'
         if: ${{ steps.release.outputs.release_created }}
 
       - name: Install dependencies
-        run: pnpm i
+        run: pnpm install --frozen-lockfile
         if: ${{ steps.release.outputs.release_created }}
 
-      - name: Run linters
-        run: pnpm lint
+      - name: Build
+        run: pnpm build
         if: ${{ steps.release.outputs.release_created }}
 
-      - name: push release
-        run: pnpm publish
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      # npm's trusted publishing (OIDC) requires npm >= 11.5.1; Node 22 ships an
+      # older npm. Publishing via npm (not pnpm) so the OIDC exchange configured
+      # in the npm registry's Trusted Publisher settings is used - no token.
+      - name: Upgrade npm for trusted publishing
+        run: npm install -g npm@latest
+        if: ${{ steps.release.outputs.release_created }}
+
+      - name: Publish to npm (trusted publishing / OIDC)
+        run: npm publish --provenance --access public
         if: ${{ steps.release.outputs.release_created }}

@@ -12,3 +12,6 @@ node_modules/
 dist/
 coverage/
 orig/
+
+# npm pack artifacts
+*.tgz
