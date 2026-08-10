@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.1](https://github.com/TheTechNetwork/composerize-ts/compare/composerize-ts-v0.9.0...composerize-ts-v0.9.1) (2026-08-10)
+
+
+### Bug Fixes
+
+* drop unmaintained deepmerge-ts and husky dependencies ([#30](https://github.com/TheTechNetwork/composerize-ts/issues/30)) ([240158b](https://github.com/TheTechNetwork/composerize-ts/commit/240158b15ea0193a9bb26a630af8ce3aec022266))
+
 ## [0.9.0](https://github.com/TheTechNetwork/composerize-ts/compare/composerize-ts-v0.8.2...composerize-ts-v0.9.0) (2026-08-10)
 
 
