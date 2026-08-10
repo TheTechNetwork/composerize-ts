@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.2](https://github.com/TheTechNetwork/composerize-ts/compare/composerize-ts-v0.8.1...composerize-ts-v0.8.2) (2026-08-10)
+
+
+### Miscellaneous Chores
+
+* release @thetechnetwork/composerize-ts 0.8.2 ([#25](https://github.com/TheTechNetwork/composerize-ts/issues/25)) ([0317a52](https://github.com/TheTechNetwork/composerize-ts/commit/0317a5217e15083ef725bcf14598a6fa30a87c80))
+
 ## [0.8.1](https://github.com/TheTechNetwork/composerize-ts/compare/composerize-ts-v0.8.0...composerize-ts-v0.8.1) (2026-08-10)
 
 
