@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-import Lexer from 'flex-js';
+import Lexer from './vendor/flex-js';
 
 /**
  * The result of a conversion. The result contains the docker-compose.yml and
