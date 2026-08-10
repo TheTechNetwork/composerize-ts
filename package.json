@@ -1,6 +1,6 @@
 {
-  "name": "composerize-ts",
-  "version": "0.7.0",
+  "name": "@thetechnetwork/composerize-ts",
+  "version": "0.7.1",
   "description": "Turns docker run commands into docker-compose files!",
   "keywords": [
     "docker",
@@ -26,10 +26,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cgoIT/composerize-ts.git"
+    "url": "git+https://github.com/TheTechNetwork/composerize-ts.git"
   },
   "bugs": {
-    "url": "https://github.com/cgoIT/composerize-ts/issues"
+    "url": "https://github.com/TheTechNetwork/composerize-ts/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "sideEffects": false,
   "prettier": {
@@ -49,22 +53,22 @@
     "commander": "^13.1.0",
     "deepmerge-ts": "^7.1.5",
     "flex-js": "^1.0.5",
-    "ip-cidr": "^4.0.2",
+    "ip-address": "^10.4.0",
     "set-value": "^4.1.0",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.7.0",
     "@commitlint/config-conventional": "^19.7.0",
+    "@eslint/js": "^9.22.0",
+    "@stylistic/eslint-plugin": "^3.1.0",
     "@types/node": "^22.18.0",
     "@types/set-value": "^4.0.1",
     "@types/yamljs": "^0.2.31",
-    "@stylistic/eslint-plugin": "^3.1.0",
-    "@eslint/js": "^9.22.0",
     "eslint": "^9.22.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-config-airbnb-base": "^15.0.0",
     "esm": "^3.2.25",
     "husky": "^9.0.11",
     "is-ci": "^4.1.0",

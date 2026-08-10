@@ -17,7 +17,7 @@ jobs:
         with:
           token: ${{ secrets.RELEASE_PLEASE_TOKEN }}
           release-type: node
-          package-name: composerize-ts
+          package-name: "@thetechnetwork/composerize-ts"
           bump-minor-pre-major: true
 
       - uses: actions/checkout@v6
@@ -28,7 +28,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version-file: .node-version
           registry-url: https://registry.npmjs.org
           always-auth: true
           cache: 'pnpm'
