@@ -1,5 +1,53 @@
 # Changelog
 
+## [0.2.0](https://github.com/TheTechNetwork/composerize-ts/compare/composerize-ts-v0.7.1...composerize-ts-v0.2.0) (2026-08-10)
+
+
+### Features
+
+* **cli:** build a nice cli interface for composerize-ts ([907e681](https://github.com/TheTechNetwork/composerize-ts/commit/907e6810640449c0a0b5944289a2754115ec64a2))
+* make the generation of the version info in the resulting docker-compose.yml optional ([a33d281](https://github.com/TheTechNetwork/composerize-ts/commit/a33d281564068e14621e8f135a0a301014832236))
+* **options:** add a lot of new options ([6d071ed](https://github.com/TheTechNetwork/composerize-ts/commit/6d071edc85136b5f97658b7905115ae1dee53e58))
+* **options:** add new option network ([d43452f](https://github.com/TheTechNetwork/composerize-ts/commit/d43452f98d63614867761913713a93f8dc65fdc7))
+* **options:** add new options ([26f1a2a](https://github.com/TheTechNetwork/composerize-ts/commit/26f1a2aefd518cd436c0113c5b588d8a5b3cae86))
+* **options:** add new options ([826e3be](https://github.com/TheTechNetwork/composerize-ts/commit/826e3be192bbbe2c32cd45f8c1a3d66088ae3961))
+* **options:** add new options ([38502e0](https://github.com/TheTechNetwork/composerize-ts/commit/38502e05e6b9d8eb9b37c2c9ca4c1f2e6f51ca23))
+* **options:** add new options ([907402e](https://github.com/TheTechNetwork/composerize-ts/commit/907402e9eb824040fe1b7653c6ff3b7970cdfeba))
+* **options:** add new options ([346b1c7](https://github.com/TheTechNetwork/composerize-ts/commit/346b1c722dbfaf804f364b497fe7ba4b48a6294f))
+* **options:** publish ports ([fbabf7f](https://github.com/TheTechNetwork/composerize-ts/commit/fbabf7f6b905c58b1c7de11e308ca0985f9d258e))
+* This is the first commit of this tiny tool ([2c66333](https://github.com/TheTechNetwork/composerize-ts/commit/2c663334e58578d580e0e338810823edd751dc17))
+
+
+### Bug Fixes
+
+* **ci:** make pnpm workable in release-please ([498594c](https://github.com/TheTechNetwork/composerize-ts/commit/498594c3691f727adb5ab7306beff686bfb042d1))
+* **ci:** make pnpm workable in release-please ([16b2513](https://github.com/TheTechNetwork/composerize-ts/commit/16b25137176c63c3590a8147b564ae6a659b2627))
+* fix invalid main/module settings in package.json ([9e482c4](https://github.com/TheTechNetwork/composerize-ts/commit/9e482c4e390d7977edf5fe2c921052b1af6cb0db))
+* fix library to be used as commonjs and esm module ([b341c25](https://github.com/TheTechNetwork/composerize-ts/commit/b341c25dfe061c2bd33d8c577039c0bbbaec5ea1))
+* fix library to be used as commonjs and esm module ([f01d96f](https://github.com/TheTechNetwork/composerize-ts/commit/f01d96f07ebbdf208b943abdcfb7682226eb0228))
+* **module:** export all types which are included in exported functions ([2c35025](https://github.com/TheTechNetwork/composerize-ts/commit/2c35025390c40adbae75a320537e41be29bc2e30))
+* **module:** export all types which are included in exported functions ([c38c1d5](https://github.com/TheTechNetwork/composerize-ts/commit/c38c1d5c4c5c543963bdcfff666afd3060f10ccb))
+* **options:** correct long-opt value detach/d ([0c8140f](https://github.com/TheTechNetwork/composerize-ts/commit/0c8140f96e95c69f5a6d0b233dfed8173302af6b))
+* **package:** add missing files to package ([7153c07](https://github.com/TheTechNetwork/composerize-ts/commit/7153c07067f49c419939d1e86627b9e78cf32bca))
+* **parse:** allow = between long-opt option and value ([28024b7](https://github.com/TheTechNetwork/composerize-ts/commit/28024b759d967613b123331ae31834b18e72d8de))
+* **parser:** correct handling of quoted option values ([82c143a](https://github.com/TheTechNetwork/composerize-ts/commit/82c143a32a6dc3d6cac796f86066872cd88e3535))
+* **parser:** don't use errors but more messages to make parsing of partly incorrect cmds possible ([c126ec5](https://github.com/TheTechNetwork/composerize-ts/commit/c126ec518984f1ce81554b71611dbad189fec2af))
+* **parser:** fix unit test ([5a20aca](https://github.com/TheTechNetwork/composerize-ts/commit/5a20acade8c5ff9635bed93c8fb9472f45a6a4e1))
+* **release-please:** remove non-free npmjs feature ([f3df150](https://github.com/TheTechNetwork/composerize-ts/commit/f3df150bff59b9ed6824fee74a0e9d3f2f04d79e))
+* **release-please:** remove non-free npmjs feature ([9039ccb](https://github.com/TheTechNetwork/composerize-ts/commit/9039ccb5ef0bd0b44412ed638c56871564d32cf2))
+* **release-please:** remove non-free npmjs feature ([3caaeb5](https://github.com/TheTechNetwork/composerize-ts/commit/3caaeb57702b764d12c3a8a8da136e2af6cd2e12))
+* **release-please:** skip corepack enable if not yet released ([0d09bc8](https://github.com/TheTechNetwork/composerize-ts/commit/0d09bc886cfcb1e4a82772db0926ed68a7355442))
+* **release-please:** skip corepack enable if not yet released ([3f730db](https://github.com/TheTechNetwork/composerize-ts/commit/3f730db95757a82afea444876718c6ac539a75cf))
+* replace ip-cidr with maintained ip-address; publish as @thetechnetwork/composerize-ts ([c977f86](https://github.com/TheTechNetwork/composerize-ts/commit/c977f864552cb8c8574e58cfdd0673ce88ccee51))
+* replace ip-cidr with maintained ip-address; publish as scoped package ([aa6b49b](https://github.com/TheTechNetwork/composerize-ts/commit/aa6b49bf338797875b481c50c19acd2704e5d974))
+* replace require with import ([f50da55](https://github.com/TheTechNetwork/composerize-ts/commit/f50da550fd171e25fab915d7b2e02a0864dc01ac))
+* replace require with import ([ed0979b](https://github.com/TheTechNetwork/composerize-ts/commit/ed0979bc70d0e9554500f0ef870cf7c54f3a2f2f))
+
+
+### Miscellaneous Chores
+
+* release version 0.2.0 ([e7b4970](https://github.com/TheTechNetwork/composerize-ts/commit/e7b49700332b608bf4bc9ac76c87cd2e5e49a38b))
+
 ## [0.7.0](https://github.com/cgoIT/composerize-ts/compare/v0.6.2...v0.7.0) (2025-02-28)
 
 
