@@ -1,4 +1,4 @@
-import Lexer from 'flex-js';
+import Lexer from './vendor/flex-js';
 import { getOption } from './options';
 import { MessageType, type Option, OptionType, ParseResult } from './types';
 import { isResult } from './util';

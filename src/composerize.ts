@@ -1,6 +1,6 @@
 import { parse } from './parser';
 import { ComposerizeResult, ParseResult, SupportedOption } from './types';
-import * as YAML from 'yamljs';
+import { stringify as yamlStringify } from 'yaml';
 import { deepmerge } from 'deepmerge-ts';
 import { getSupportedOptions } from './options';
 
@@ -58,7 +58,10 @@ export const composerize = (
       ...composeSpecification,
     };
   }
-  return new ComposerizeResult(YAML.stringify(composeSpecification, 9, 4), parseResult.messages);
+  return new ComposerizeResult(
+    yamlStringify(composeSpecification, { indent: 4, lineWidth: 0 }),
+    parseResult.messages,
+  );
 };
 
 /**
