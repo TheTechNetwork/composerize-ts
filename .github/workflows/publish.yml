@@ -1,0 +1,49 @@
+name: publish
+
+# npm publishes ONLY when a GitHub release is published. release-please creates
+# the release (on merge of its release PR); this workflow then builds the tagged
+# commit and publishes it. There is no push/dispatch trigger, so a publish can
+# never happen without a git release behind it.
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  id-token: write # OIDC for npm trusted publishing (no NPM_TOKEN)
+
+concurrency:
+  group: publish-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
+
+jobs:
+  npm-publish:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks out the commit the release tag points at, so the published
+      # artifact is exactly the released version.
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .node-version
+          registry-url: https://registry.npmjs.org
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      # npm's trusted publishing (OIDC) needs npm >= 11.5.1; Node 22 ships an
+      # older npm. Publish via npm (not pnpm) so the OIDC exchange configured in
+      # the registry's Trusted Publisher settings is used - no token.
+      - name: Upgrade npm for trusted publishing
+        run: npm install -g npm@latest
+
+      - name: Publish to npm (trusted publishing / OIDC)
+        run: npm publish --provenance --access public
