@@ -711,5 +711,4 @@ Lexer.prototype.isRegExpMatchEOL = function(re) {
   return re.source.substr(-1) === '$';
 }
 
-
 export default Lexer;
