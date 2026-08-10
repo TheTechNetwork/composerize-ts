@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices",
+    "helpers:pinGitHubActionDigestsToSemver",
+    "helpers:disableTypesNodeMajor",
+    "security:openssf-scorecard",
+    ":enableVulnerabilityAlerts",
+    ":automergeStableNonMajor",
+    "group:linters"
+  ],
+  "rebaseWhen": "behind-base-branch",
+  "labels": ["dependencies"],
+  "lockFileMaintenance": {
+    "enabled": true
+  }
+}

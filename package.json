@@ -12,6 +12,10 @@
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
+  "packageManager": "pnpm@10.34.5",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "pnpm run lint && rm -rf dist && tsc && tsc --build tsconfig.esm.json && pnpm typedoc",
     "lint": "eslint .",
@@ -45,14 +49,14 @@
     "commander": "^13.1.0",
     "deepmerge-ts": "^7.1.5",
     "flex-js": "^1.0.5",
-    "ip-cidr": "^3.1.0",
+    "ip-cidr": "^4.0.2",
     "set-value": "^4.1.0",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.7.0",
     "@commitlint/config-conventional": "^19.7.0",
-    "@types/node": "^18.19.76",
+    "@types/node": "^22.18.0",
     "@types/set-value": "^4.0.1",
     "@types/yamljs": "^0.2.31",
     "@stylistic/eslint-plugin": "^3.1.0",
