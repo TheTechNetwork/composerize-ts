@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/TheTechNetwork/composerize-ts/compare/composerize-ts-v0.7.1...composerize-ts-v0.8.0) (2026-08-10)
+
+
+### Miscellaneous Chores
+
+* **deps:** update all dependencies to their latest versions ([#15](https://github.com/TheTechNetwork/composerize-ts/issues/15)) ([5632787](https://github.com/TheTechNetwork/composerize-ts/commit/5632787116bfbab69961797028cf1964a31a4140))
+
 ## [0.7.0](https://github.com/cgoIT/composerize-ts/compare/v0.6.2...v0.7.0) (2025-02-28)
 
 
