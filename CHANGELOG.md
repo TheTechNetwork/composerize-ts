@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.9.0](https://github.com/TheTechNetwork/composerize-ts/compare/composerize-ts-v0.8.2...composerize-ts-v0.9.0) (2026-08-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* the generated docker-compose YAML no longer wraps plain scalar strings that contain ':' in single quotes. For example `- '80:80'` is now emitted as `- 80:80`, and `- '/var/run/docker.sock:/tmp/docker.sock:ro'` as `- /var/run/docker.sock:/tmp/docker.sock:ro`. The output is semantically identical and parses to the same values, but consumers that assert the exact output text (snapshot/golden tests, e.g. it-tools) must refresh their expectations.
+
+### Features
+
+* replace abandoned flex-js and yamljs runtime dependencies ([#28](https://github.com/TheTechNetwork/composerize-ts/issues/28)) ([d861e1e](https://github.com/TheTechNetwork/composerize-ts/commit/d861e1e2a8dbb6172a22c7d72d48b7bc5fb2ebbb))
+
 ## [0.8.2](https://github.com/TheTechNetwork/composerize-ts/compare/composerize-ts-v0.8.1...composerize-ts-v0.8.2) (2026-08-10)
 
 
