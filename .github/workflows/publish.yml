@@ -40,10 +40,13 @@ jobs:
         run: pnpm build
 
       # npm's trusted publishing (OIDC) needs npm >= 11.5.1; Node 22 ships an
-      # older npm. Publish via npm (not pnpm) so the OIDC exchange configured in
-      # the registry's Trusted Publisher settings is used - no token.
+      # older npm. Pin to the npm 11 line: npm@latest is now npm 12, which
+      # requires Node >= 22.22.2 and fails EBADENGINE on the Node pinned in
+      # .node-version. npm 11.x supports trusted publishing and runs on Node 22.
+      # Publish via npm (not pnpm) so the OIDC exchange configured in the
+      # registry's Trusted Publisher settings is used - no token.
       - name: Upgrade npm for trusted publishing
-        run: npm install -g npm@latest
+        run: npm install -g npm@11
 
       - name: Publish to npm (trusted publishing / OIDC)
         run: npm publish --provenance --access public
