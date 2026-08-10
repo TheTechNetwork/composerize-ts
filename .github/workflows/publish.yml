@@ -1,0 +1,45 @@
+name: publish
+
+# Manual npm publish of the version currently in package.json. Use this to
+# publish on demand (e.g. the first scoped release) without waiting for the
+# release-please cycle. Release-triggered publishing stays owned by
+# release-please.yml, so this is dispatch-only and the two never overlap.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write # enables npm provenance / future OIDC trusted publishing
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  npm-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          registry-url: https://registry.npmjs.org
+          always-auth: true
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Publish to npm
+        run: pnpm publish --no-git-checks --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

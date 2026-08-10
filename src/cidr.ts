@@ -1,66 +1,19 @@
-import IPCIDR from 'ip-cidr';
-// const IPCIDR = require('ip-cidr');
+import { Address4, Address6 } from 'ip-address';
 
-const abbreviate = (a: string): string => {
-  a = a.replace(/0000/g, 'g');
-  a = a.replace(/:000/g, ':');
-  a = a.replace(/:00/g, ':');
-  a = a.replace(/:0/g, ':');
-  a = a.replace(/g/g, '0');
-  a = a.replace(/^0*/, '');
-  const sections = a.split(/:/g);
-  let zPreviousFlag = false;
-  let zeroStartIndex = -1;
-  let zeroLength = 0;
-  let zStartIndex = -1;
-  let zLength = 0;
-  for (let i = 0; i < 8; ++i) {
-    const section = sections[i];
-    const zFlag = section === '0';
-    if (zFlag && !zPreviousFlag) {
-      zStartIndex = i;
-    }
-    if (!zFlag && zPreviousFlag) {
-      zLength = i - zStartIndex;
-    }
-    if (zLength > 1 && zLength > zeroLength) {
-      zeroStartIndex = zStartIndex;
-      zeroLength = zLength;
-    }
-    zPreviousFlag = section === '0';
-  }
-  if (zPreviousFlag) {
-    zLength = 8 - zStartIndex;
-  }
-  if (zLength > 1 && zLength > zeroLength) {
-    zeroStartIndex = zStartIndex;
-    zeroLength = zLength;
-  }
-  // console.log(zeroStartIndex, zeroLength);
-  // console.log(sections);
-  if (zeroStartIndex >= 0 && zeroLength > 1) {
-    sections.splice(zeroStartIndex, zeroLength, 'g');
-  }
-  // console.log(sections);
-  a = sections.join(':');
-  // console.log(a);
-  a = a.replace(/:g:/g, '::');
-  a = a.replace(/:g/g, '::');
-  a = a.replace(/g:/g, '::');
-  a = a.replace(/g/g, '::');
-  // console.log(a);
-  return a;
-};
-
+// Normalize a CIDR string to its network-start address plus subnet suffix,
+// e.g. '192.168.0.22/24' -> '192.168.0.0/24' and
+// '2001:0000:0000:1234:1b12:0000:0000:1a13/64' -> '2001:0:0:1234::/64'.
+// ip-address' correctForm() applies RFC 5952 canonical IPv6 compression, so no
+// hand-rolled abbreviation is needed.
 export const normalize = (address: string): string => {
-  if (IPCIDR.isValidCIDR(address)) {
-    const cidr = new IPCIDR(address);
+  if (Address4.isValid(address)) {
+    const cidr = new Address4(address);
+    return `${cidr.startAddress().correctForm()}/${cidr.subnetMask}`;
+  }
 
-    let start = cidr.start();
-    if (!cidr.addressStart.v4) {
-      start = abbreviate(start.toString());
-    }
-    return start + cidr.addressStart.subnet;
+  if (Address6.isValid(address)) {
+    const cidr = new Address6(address);
+    return `${cidr.startAddress().correctForm()}/${cidr.subnetMask}`;
   }
 
   return '';
