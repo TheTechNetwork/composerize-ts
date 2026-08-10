@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.1](https://github.com/TheTechNetwork/composerize-ts/compare/composerize-ts-v0.8.0...composerize-ts-v0.8.1) (2026-08-10)
+
+
+### Bug Fixes
+
+* **ci:** pin npm 11 for publish (npm@latest breaks Node 22 engine) ([#19](https://github.com/TheTechNetwork/composerize-ts/issues/19)) ([06f29a4](https://github.com/TheTechNetwork/composerize-ts/commit/06f29a4f1260a73ee9d1b8eee0e72de497d1d615))
+
 ## [0.8.0](https://github.com/TheTechNetwork/composerize-ts/compare/composerize-ts-v0.7.1...composerize-ts-v0.8.0) (2026-08-10)
 
 
