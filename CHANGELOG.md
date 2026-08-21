@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.2](https://github.com/TheTechNetwork/composerize-ts/compare/composerize-ts-v0.9.1...composerize-ts-v0.9.2) (2026-08-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ip-address to v10.5.0 ([#32](https://github.com/TheTechNetwork/composerize-ts/issues/32)) ([6f5aca3](https://github.com/TheTechNetwork/composerize-ts/commit/6f5aca3555e9e7e7388814ce3425d135fbcaf4c2))
+
 ## [0.9.1](https://github.com/TheTechNetwork/composerize-ts/compare/composerize-ts-v0.9.0...composerize-ts-v0.9.1) (2026-08-10)
 
 
