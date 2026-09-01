@@ -51,7 +51,7 @@
   ],
   "dependencies": {
     "commander": "^15.0.0",
-    "ip-address": "10.5.0",
+    "ip-address": "10.7.0",
     "set-value": "^4.1.0",
     "yaml": "^2.9.0"
   },
