@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.4](https://github.com/unabandoned/composerize-ts/compare/composerize-ts-v0.9.3...composerize-ts-v0.9.4) (2026-09-21)
+
+
+### Dependencies & maintenance
+
+* **deps:** update dependency vitest to v5 ([#54](https://github.com/unabandoned/composerize-ts/issues/54)) ([73dd09f](https://github.com/unabandoned/composerize-ts/commit/73dd09f3351221812fcdbb37451a80a685f8dd21))
+* pin the reusable workflows to v1.1.0 ([#72](https://github.com/unabandoned/composerize-ts/issues/72)) ([84f1b8f](https://github.com/unabandoned/composerize-ts/commit/84f1b8fc797643edf024dd1d3a66ee1a1ae63fc9))
+
 ## [0.9.3](https://github.com/unabandoned/composerize-ts/compare/composerize-ts-v0.9.2...composerize-ts-v0.9.3) (2026-09-21)
 
 
