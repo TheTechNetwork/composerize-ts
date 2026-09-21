@@ -1,13 +1,13 @@
 {
   "name": "@unabandoned/composerize-ts",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "Turns docker run commands into docker-compose files!",
   "keywords": [
     "docker",
     "docker-compose",
     "converter"
   ],
-  "author": "Carsten G\u00f6tzinger <info@cgo-it.de> (https://cgo-it.de)",
+  "author": "Carsten Götzinger <info@cgo-it.de> (https://cgo-it.de)",
   "homepage": "https://github.com/unabandoned/composerize-ts#readme",
   "license": "MIT",
   "main": "dist/cjs/index.js",
