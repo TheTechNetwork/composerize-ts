@@ -1,15 +1,21 @@
-# composerize-ts
+# @unabandoned/composerize-ts
 
-![CI](https://github.com/cgoIT/composerize-ts/actions/workflows/ci.yml/badge.svg)
-![npm](https://img.shields.io/npm/v/composerize-ts)
+![CI](https://github.com/unabandoned/composerize-ts/actions/workflows/ci.yml/badge.svg)
+![npm](https://img.shields.io/npm/v/@unabandoned/composerize-ts)
 
 This is a very small tool to convert `docker run/create` commands into (hopefully) working `docker-compose.yml` files.
+
+> A maintained fork of [cgoIT/composerize-ts](https://github.com/cgoIT/composerize-ts), which has had no
+> release since April 2023. Published as
+> [`@unabandoned/composerize-ts`](https://www.npmjs.com/package/@unabandoned/composerize-ts); the API is
+> unchanged from upstream. It was previously published as `@thetechnetwork/composerize-ts`, which is
+> deprecated in favour of this package.
 
 ## CLI
 
 composerize-ts can be run in the cli.
 
-`npm install composerize-ts -g` to install, and run as such:
+`npm install @unabandoned/composerize-ts -g` to install, and run as such:
 
 ```bash
 $ composerize-ts docker run -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro --restart always --log-opt max-size=1g nginx
@@ -96,9 +102,9 @@ You'll find the documentation in the [docs](./docs) folder.
 
 ## Contributing
 
-- [Clone a fork of the repo](https://guides.github.com/activities/forking/) and install the project dependencies by running `pnpm install`
-- Make your changes, and build the project by running `pnpm run build`
-- Test your changes with `pnpm run test`
+- [Clone a fork of the repo](https://guides.github.com/activities/forking/) and install the project dependencies by running `npm install`
+- Make your changes, and build the project by running `npm run build`
+- Test your changes with `npm test`
 
 ## Maintainers
 

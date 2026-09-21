@@ -1,22 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:best-practices",
-    "helpers:pinGitHubActionDigestsToSemver",
-    "helpers:disableTypesNodeMajor",
-    "security:openssf-scorecard",
-    ":enableVulnerabilityAlerts",
-    ":automergeStableNonMajor",
-    "group:linters"
+    "github>unabandoned/renovate-config"
   ],
-  "rebaseWhen": "behind-base-branch",
-  "labels": ["dependencies"],
-  "lockFileMaintenance": {
-    "enabled": true
-  },
+  "forkProcessing": "enabled",
   "packageRules": [
     {
-      "description": "Hold TypeScript on the 5.x line: typescript-eslint and typedoc do not support the TypeScript 7 native compiler yet (typescript-eslint#10940). Remove this cap once they do.",
+      "description": "Hold TypeScript on the 6.x line: typescript-eslint and typedoc do not support the TypeScript 7 native compiler yet (typescript-eslint#10940), and both run in this fork's build. Carried over from the pre-adoption config; remove this cap once they do, rather than pinning anything else around it.",
       "matchPackageNames": ["typescript"],
       "allowedVersions": "<7"
     }
