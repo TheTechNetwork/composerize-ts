@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.3](https://github.com/unabandoned/composerize-ts/compare/composerize-ts-v0.9.2...composerize-ts-v0.9.3) (2026-09-21)
+
+
+### Dependencies & maintenance
+
+* **deps:** update dependency prettier to v3.9.8 ([#69](https://github.com/unabandoned/composerize-ts/issues/69)) ([3f5d64a](https://github.com/unabandoned/composerize-ts/commit/3f5d64a9f283b5016407ffc9111d307c632be022))
+
 ## [0.9.2](https://github.com/unabandoned/composerize-ts/compare/composerize-ts-v0.9.1...composerize-ts-v0.9.2) (2026-09-21)
 
 
