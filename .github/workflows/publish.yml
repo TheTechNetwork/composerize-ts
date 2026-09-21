@@ -10,9 +10,7 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    # Pinned to main until the release carrying `build-for-publish`
-    # (unabandoned/.github#37) is cut; repin to that tag once it exists.
-    uses: unabandoned/.github/.github/workflows/reusable-publish.yml@main
+    uses: unabandoned/.github/.github/workflows/reusable-publish.yml@bd9eb6bfc5a567b272e0c6f05703a726a2655531 # v1.1.0
     with:
       # `files` ships dist/, which tsc generates; npm publish --ignore-scripts
       # never runs prepublishOnly, so the build has to happen in the workflow.
