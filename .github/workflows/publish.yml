@@ -1,52 +1,20 @@
 name: publish
-
-# npm publishes ONLY when a GitHub release is published. release-please creates
-# the release (on merge of its release PR); this workflow then builds the tagged
-# commit and publishes it. There is no push/dispatch trigger, so a publish can
-# never happen without a git release behind it.
 on:
   release:
     types: [published]
-
 permissions:
   contents: read
-  id-token: write # OIDC for npm trusted publishing (no NPM_TOKEN)
-
-concurrency:
-  group: publish-${{ github.event.release.tag_name }}
-  cancel-in-progress: false
-
+  id-token: write # required for OIDC on the calling job
 jobs:
-  npm-publish:
-    runs-on: ubuntu-latest
-    steps:
-      # Checks out the commit the release tag points at, so the published
-      # artifact is exactly the released version.
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
-
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
-        with:
-          node-version-file: .node-version
-          registry-url: https://registry.npmjs.org
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build
-        run: pnpm build
-
-      # npm's trusted publishing (OIDC) needs npm >= 11.5.1; Node 22 ships an
-      # older npm. Pin to the npm 11 line: npm@latest is now npm 12, which
-      # requires Node >= 22.22.2 and fails EBADENGINE on the Node pinned in
-      # .node-version. npm 11.x supports trusted publishing and runs on Node 22.
-      # Publish via npm (not pnpm) so the OIDC exchange configured in the
-      # registry's Trusted Publisher settings is used - no token.
-      - name: Upgrade npm for trusted publishing
-        run: npm install -g npm@11
-
-      - name: Publish to npm (trusted publishing / OIDC)
-        run: npm publish --provenance --access public
+  publish:
+    permissions:
+      contents: read
+      id-token: write
+    # Pinned to main until the release carrying `build-for-publish`
+    # (unabandoned/.github#37) is cut; repin to that tag once it exists.
+    uses: unabandoned/.github/.github/workflows/reusable-publish.yml@main
+    with:
+      # `files` ships dist/, which tsc generates; npm publish --ignore-scripts
+      # never runs prepublishOnly, so the build has to happen in the workflow.
+      build-for-publish: true
+    secrets: inherit

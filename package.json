@@ -1,5 +1,5 @@
 {
-  "name": "@thetechnetwork/composerize-ts",
+  "name": "@unabandoned/composerize-ts",
   "version": "0.9.1",
   "description": "Turns docker run commands into docker-compose files!",
   "keywords": [
@@ -7,33 +7,32 @@
     "docker-compose",
     "converter"
   ],
-  "author": "Carsten Götzinger <info@cgo-it.de> (https://cgo-it.de)",
-  "homepage": "https://cgo-it.de",
+  "author": "Carsten G\u00f6tzinger <info@cgo-it.de> (https://cgo-it.de)",
+  "homepage": "https://github.com/unabandoned/composerize-ts#readme",
   "license": "MIT",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "packageManager": "pnpm@11.27.0",
   "engines": {
     "node": ">=22"
   },
   "scripts": {
-    "build": "pnpm run lint && rm -rf dist && tsc && tsc --build tsconfig.esm.json && pnpm typedoc",
+    "build": "npm run lint && rm -rf dist && tsc && tsc --build tsconfig.esm.json && npm run doc",
     "lint": "eslint .",
-    "doc": "pnpm typedoc",
-    "prepublishOnly": "rm -rf dist && rm -rf docs && pnpm run build && npm run test",
+    "doc": "typedoc",
+    "prepublishOnly": "rm -rf dist && rm -rf docs && npm run build && npm test",
     "test": "vitest run",
     "prepare": "git config core.hooksPath .githooks || true"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheTechNetwork/composerize-ts.git"
+    "url": "git+https://github.com/unabandoned/composerize-ts.git"
   },
   "bugs": {
-    "url": "https://github.com/TheTechNetwork/composerize-ts/issues"
+    "url": "https://github.com/unabandoned/composerize-ts/issues"
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "provenance": true
   },
   "sideEffects": false,
   "prettier": {

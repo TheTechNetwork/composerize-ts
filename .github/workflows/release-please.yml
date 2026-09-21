@@ -1,26 +1,11 @@
+name: release-please
 on:
   push:
-    branches:
-      - main
-name: release-please
-permissions: {}
+    branches: [main]
 jobs:
-  # Maintains the release PR from Conventional Commits and, when it is merged,
-  # creates the GitHub release + tag. Publishing to npm is intentionally NOT
-  # done here - it is handled by publish.yml, which triggers only on the
-  # published release event, so npm can only ever publish from a git release.
   release-please:
     permissions:
-      contents: write # create the release commit / tag
-      pull-requests: write # create/update the release PR
-    runs-on: ubuntu-latest
-    steps:
-      - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
-        with:
-          # Prefer a PAT when configured: a release created with a PAT triggers
-          # publish.yml (the `release: published` event), whereas a release
-          # created with the built-in GITHUB_TOKEN does not fire other
-          # workflows. Fall back to GITHUB_TOKEN so this still opens release PRs
-          # with no secret setup. release-type / versioning live in
-          # release-please-config.json + .release-please-manifest.json.
-          token: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
+      contents: write
+      pull-requests: write
+    uses: unabandoned/.github/.github/workflows/reusable-release-please.yml@0c6624ebbfd7e7f93a448163c241111768d86541 # v1.0.5
+    secrets: inherit

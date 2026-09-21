@@ -1,0 +1,27 @@
+schema: 1
+
+package: "@unabandoned/composerize-ts"
+
+upstream:
+  repo: cgoIT/composerize-ts
+  reason: "no release since 2023-04-04 (v0.6.2); issues and PRs unanswered"
+
+summary: >-
+  Converts `docker run` / `docker create` command lines into the equivalent
+  docker-compose service definition, as a library and a CLI.
+
+why-forked: >-
+  IT-Tools' docker-run-to-docker-compose converter is built on it, and upstream
+  went quiet with an ageing dependency and dev tree (commander, yaml, set-value,
+  the TypeScript toolchain). Adopted so Renovate keeps that tree current for the
+  tool that ships it. Previously maintained as TheTechNetwork/composerize-ts and
+  published as @thetechnetwork/composerize-ts; moved here so it sits with the
+  rest of the adopted dependencies rather than beside our own projects.
+
+status: active
+
+used-by:
+  - consumer: TheTechNetwork/it-tools
+    purpose: "Powers the 'Docker run to docker-compose converter' tool."
+
+tags: [docker, docker-compose, converter, cli, typescript]
