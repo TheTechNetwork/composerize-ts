@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.9.5](https://github.com/unabandoned/composerize-ts/compare/composerize-ts-v0.9.4...composerize-ts-v0.9.5) (2026-09-22)
+
+
+### Features
+
+* replace set-value with an in-tree dot-path setter ([#80](https://github.com/unabandoned/composerize-ts/issues/80)) ([3aff069](https://github.com/unabandoned/composerize-ts/commit/3aff06985d9e1529d5d3fd4959cac2c70ee461d3))
+
+
+### Dependencies & maintenance
+
+* add the renovate-config validation workflow ([34fffa3](https://github.com/unabandoned/composerize-ts/commit/34fffa3ac359efc9a44fd29c2e9086aefebcefbb))
+* **deps:** update dependency @types/node to v22.20.4 ([#79](https://github.com/unabandoned/composerize-ts/issues/79)) ([9a0ef61](https://github.com/unabandoned/composerize-ts/commit/9a0ef61a65d41fce7b89dde666878d2e0bf0ec9d))
+* **deps:** update dependency eslint to v10.11.0 ([#78](https://github.com/unabandoned/composerize-ts/issues/78)) ([19d80e3](https://github.com/unabandoned/composerize-ts/commit/19d80e309bc38006c90f0d3097d15842ebb05d7a))
+* **deps:** update dependency typedoc-plugin-markdown to v4.13.1 ([#77](https://github.com/unabandoned/composerize-ts/issues/77)) ([78cb58c](https://github.com/unabandoned/composerize-ts/commit/78cb58c74b5be498a8b22fd7960e49fabf1df243))
+
 ## [0.9.4](https://github.com/unabandoned/composerize-ts/compare/composerize-ts-v0.9.3...composerize-ts-v0.9.4) (2026-09-21)
 
 
