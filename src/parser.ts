@@ -3,7 +3,7 @@ import { getOption } from './options';
 import { MessageType, type Option, OptionType, ParseResult } from './types';
 import { isResult } from './util';
 import { normalize } from './cidr';
-import set from 'set-value';
+import set from './set';
 
 const SHORT_OPT_STATE = 'short-opt';
 const LONG_OPT_STATE = 'long-opt';
