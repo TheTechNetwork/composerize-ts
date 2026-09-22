@@ -1,5 +1,5 @@
 import { type Message, MessageType, type CallbackResult, type LexerActionCallback, Option } from './types';
-import set from 'set-value';
+import set from './set';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getValue = (value: any, opt: Option): string | number | string[] | number[] => {
