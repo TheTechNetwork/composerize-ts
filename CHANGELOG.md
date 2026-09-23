@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.6](https://github.com/unabandoned/composerize-ts/compare/composerize-ts-v0.9.5...composerize-ts-v0.9.6) (2026-09-23)
+
+
+### Dependencies & maintenance
+
+* **deps:** update commitlint monorepo to v21.2.3 ([#81](https://github.com/unabandoned/composerize-ts/issues/81)) ([ae7f04b](https://github.com/unabandoned/composerize-ts/commit/ae7f04bf7d5d9ef7f504d1e59b9425c847c8a59e))
+
 ## [0.9.5](https://github.com/unabandoned/composerize-ts/compare/composerize-ts-v0.9.4...composerize-ts-v0.9.5) (2026-09-22)
 
 
